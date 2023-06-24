@@ -1,2 +1,2 @@
-# new-project-02
-Soon
+# Next + TypeScript boilerplate
+...
