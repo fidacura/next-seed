@@ -7,9 +7,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 10000",
+    "dev": "next dev -p 10100",
     "build": "next build",
-    "start": "PORT=10000 next start",
+    "start": "PORT=10100 next start",
     "lint": "next lint",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx}\""
