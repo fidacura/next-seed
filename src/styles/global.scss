@@ -1,15 +1,16 @@
 // src/styles/global.scss
-@import "./reset.scss";
+// @import "./reset.scss";
+@use "./reset" as *;
 
 // font-face 
-@font-face {
-  font-family: "seed-font";
-  src: url("../../fonts/seed-font.woff2") format("woff2"),
-       url("../../fonts/seed-font.woff") format("woff");
-  font-weight: 485;
-  font-style: normal;
-  font-display: swap;
-}
+// @font-face {
+//   font-family: "seed-font";
+//   src: url("../../fonts/seed-font.woff2") format("woff2"),
+//        url("../../fonts/seed-font.woff") format("woff");
+//   font-weight: 485;
+//   font-style: normal;
+//   font-display: swap;
+// }
 
 // *************************************** //
 //                VARIABLES                //
@@ -192,7 +193,8 @@
 
 // base-styling
 html {
-  font-size: 16px; // Base font size
+  font-size: 16px;
+  padding: 1rem;
 }
 
 body {
@@ -477,7 +479,7 @@ button {
 // dark-mode support
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: var(--color-gray-900);
+    --color-bg: var(--color-black);
     --color-text: var(--color-gray-100);
     --color-text-secondary: var(--color-gray-400);
   }
