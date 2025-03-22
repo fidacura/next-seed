@@ -1,0 +1,53 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+node_modules
+/dist
+dist
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+.next
+.nova
+/.next/
+/out/
+
+# production
+/build
+
+# debug
+npm-debug.log*
+package-lock.json
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+.pnpm-debug.log*
+
+# env files
+.env
+.env.local
+.env-custom-development
+.env-development
+.env-textile
+.env-production
+.env*.local
+
+# misc
+/**/*/.DS_STORE
+/**/*/node_modules
+/**/*/.next
+/**/*/.data
+.DS_STORE
+DS_STORE
+*.pem
+
+
+
+
+
+
