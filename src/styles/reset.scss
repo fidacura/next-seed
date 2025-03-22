@@ -1,0 +1,66 @@
+// src/styles/reset.scss
+// A modern CSS reset that removes default browser styling while preserving useful defaults
+
+/* box-sizing for all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* remove default spacing and borders */
+html,
+body,
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* reemove list styles on ul, ol */
+ul, ol {
+  list-style: none;
+}
+
+/* set core body-defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* easy-going images */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove default styles for interactive-elements */
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* remove text decoration from links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* reset tables */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}

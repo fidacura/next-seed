@@ -1,0 +1,535 @@
+// src/styles/global.scss
+@import "./reset.scss";
+
+// font-face 
+@font-face {
+  font-family: "seed-font";
+  src: url("../../fonts/seed-font.woff2") format("woff2"),
+       url("../../fonts/seed-font.woff") format("woff");
+  font-weight: 485;
+  font-style: normal;
+  font-display: swap;
+}
+
+// *************************************** //
+//                VARIABLES                //
+// *************************************** //
+:root {
+  // typography
+  --font-primary: "seed-font", -apple-system, sans-serif;
+  --font-serif: "Times New Roman", Times, serif;
+  --font-mono: monospace;
+  
+  // font-sizes
+  --font-size-xs: 0.75rem;    // 12px
+  --font-size-sm: 0.875rem;   // 14px
+  --font-size-base: 1rem;     // 16px
+  --font-size-md: 1.125rem;   // 18px
+  --font-size-lg: 1.25rem;    // 20px
+  --font-size-xl: 1.5rem;     // 24px
+  --font-size-2xl: 1.875rem;  // 30px
+  --font-size-3xl: 2.25rem;   // 36px
+  
+  // font-weights
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  
+  // line-heights
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+  --line-height-loose: 1.75;
+  
+  // colors
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-100: #f7f7f7;
+  --color-gray-200: #e6e6e6;
+  --color-gray-300: #d1d1d1;
+  --color-gray-400: #adadad;
+  --color-gray-500: #8c8c8c;
+  --color-gray-600: #6b6b6b;
+  --color-gray-700: #4e4e4e;
+  --color-gray-800: #333333;
+  --color-gray-900: #1a1a1a;
+  
+  --color-primary: #2563eb;
+  --color-primary-light: #60a5fa;
+  --color-primary-dark: #1e40af;
+  
+  --color-secondary: #4f46e5;
+  --color-secondary-light: #818cf8;
+  --color-secondary-dark: #3730a3;
+  
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+  
+  // bg, txt colors
+  --color-bg: var(--color-gray-100);
+  --color-text: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-600);
+  
+  // spacing
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;  // 4px
+  --spacing-2: 0.5rem;   // 8px
+  --spacing-3: 0.75rem;  // 12px
+  --spacing-4: 1rem;     // 16px
+  --spacing-5: 1.25rem;  // 20px
+  --spacing-6: 1.5rem;   // 24px
+  --spacing-8: 2rem;     // 32px
+  --spacing-10: 2.5rem;  // 40px
+  --spacing-12: 3rem;    // 48px
+  --spacing-16: 4rem;    // 64px
+  
+  // borders
+  --border-radius-sm: 0.125rem;  // 2px
+  --border-radius: 0.25rem;      // 4px
+  --border-radius-md: 0.375rem;  // 6px
+  --border-radius-lg: 0.5rem;    // 8px
+  --border-radius-full: 9999px;
+  
+  --border-width: 1px;
+  --border-width-md: 2px;
+  --border-width-lg: 3px;
+  
+  // shadows
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  // transitions
+  --transition-slow: 500ms;
+  --transition-base: 300ms;
+  --transition-fast: 150ms;
+  
+  // z-index
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+}
+
+// *************************************** //
+//                 MIXINS                  //
+// *************************************** //
+
+// typography enhancement
+@mixin enhance-typography {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+// media-queries
+@mixin screen-xs {
+  @media (min-width: 480px) { @content; }
+}
+
+@mixin screen-sm {
+  @media (min-width: 640px) { @content; }
+}
+
+@mixin screen-md {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin screen-lg {
+  @media (min-width: 1024px) { @content; }
+}
+
+@mixin screen-xl {
+  @media (min-width: 1280px) { @content; }
+}
+
+@mixin screen-2xl {
+  @media (min-width: 1536px) { @content; }
+}
+
+// flexbox-utils
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// hide-element but keep it accessible for screen-readers
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// *************************************** //
+//             GLOBAL STYLES               //
+// *************************************** //
+
+// base-styling
+html {
+  font-size: 16px; // Base font size
+}
+
+body {
+  @include enhance-typography;
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: var(--line-height-base);
+  overflow-x: hidden;
+}
+
+// type-styles
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: var(--spacing-4);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+}
+
+h5 {
+  font-size: var(--font-size-md);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+}
+
+p {
+  margin-bottom: var(--spacing-4);
+}
+
+// links
+a {
+  color: var(--color-primary);
+  transition: color var(--transition-fast) ease-in-out;
+  
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+}
+
+// form-elements
+input, textarea, select, button {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-2) var(--spacing-3);
+  border: var(--border-width) solid var(--color-gray-300);
+  border-radius: var(--border-radius);
+  background-color: var(--color-white);
+  transition: all var(--transition-fast) ease-in-out;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: var(--font-weight-medium);
+  
+  &:hover {
+    background-color: var(--color-primary-dark);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// utility-classes
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.sr-only {
+  @include visually-hidden;
+}
+
+// *************************************** //
+//                 GRID                    //
+// *************************************** //
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-4);
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-4);
+}
+
+// col-spans
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: span $i;
+  }
+  
+  @include screen-md {
+    .col-md-#{$i} {
+      grid-column: span $i;
+    }
+  }
+  
+  @include screen-lg {
+    .col-lg-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}
+
+// *************************************** //
+//          RESPONSIVE SPACING             //
+// *************************************** //
+
+// margin-utils
+@each $name, $size in (
+  '0': var(--spacing-0),
+  '1': var(--spacing-1),
+  '2': var(--spacing-2),
+  '4': var(--spacing-4),
+  '6': var(--spacing-6),
+  '8': var(--spacing-8)
+) {
+  .m-#{$name} { margin: $size; }
+  .mx-#{$name} { margin-left: $size; margin-right: $size; }
+  .my-#{$name} { margin-top: $size; margin-bottom: $size; }
+  .mt-#{$name} { margin-top: $size; }
+  .mr-#{$name} { margin-right: $size; }
+  .mb-#{$name} { margin-bottom: $size; }
+  .ml-#{$name} { margin-left: $size; }
+  
+  // responsive-vars
+  @include screen-sm {
+    .sm\:m-#{$name} { margin: $size; }
+    .sm\:mx-#{$name} { margin-left: $size; margin-right: $size; }
+    .sm\:my-#{$name} { margin-top: $size; margin-bottom: $size; }
+    .sm\:mt-#{$name} { margin-top: $size; }
+    .sm\:mr-#{$name} { margin-right: $size; }
+    .sm\:mb-#{$name} { margin-bottom: $size; }
+    .sm\:ml-#{$name} { margin-left: $size; }
+  }
+  
+  @include screen-md {
+    .md\:m-#{$name} { margin: $size; }
+    .md\:mx-#{$name} { margin-left: $size; margin-right: $size; }
+    .md\:my-#{$name} { margin-top: $size; margin-bottom: $size; }
+    .md\:mt-#{$name} { margin-top: $size; }
+    .md\:mr-#{$name} { margin-right: $size; }
+    .md\:mb-#{$name} { margin-bottom: $size; }
+    .md\:ml-#{$name} { margin-left: $size; }
+  }
+  
+  @include screen-lg {
+    .lg\:m-#{$name} { margin: $size; }
+    .lg\:mx-#{$name} { margin-left: $size; margin-right: $size; }
+    .lg\:my-#{$name} { margin-top: $size; margin-bottom: $size; }
+    .lg\:mt-#{$name} { margin-top: $size; }
+    .lg\:mr-#{$name} { margin-right: $size; }
+    .lg\:mb-#{$name} { margin-bottom: $size; }
+    .lg\:ml-#{$name} { margin-left: $size; }
+  }
+}
+
+// padding-utils
+@each $name, $size in (
+  '0': var(--spacing-0),
+  '1': var(--spacing-1),
+  '2': var(--spacing-2),
+  '4': var(--spacing-4),
+  '6': var(--spacing-6),
+  '8': var(--spacing-8)
+) {
+  .p-#{$name} { padding: $size; }
+  .px-#{$name} { padding-left: $size; padding-right: $size; }
+  .py-#{$name} { padding-top: $size; padding-bottom: $size; }
+  .pt-#{$name} { padding-top: $size; }
+  .pr-#{$name} { padding-right: $size; }
+  .pb-#{$name} { padding-bottom: $size; }
+  .pl-#{$name} { padding-left: $size; }
+  
+  // responsive-vars
+  @include screen-sm {
+    .sm\:p-#{$name} { padding: $size; }
+    .sm\:px-#{$name} { padding-left: $size; padding-right: $size; }
+    .sm\:py-#{$name} { padding-top: $size; padding-bottom: $size; }
+    .sm\:pt-#{$name} { padding-top: $size; }
+    .sm\:pr-#{$name} { padding-right: $size; }
+    .sm\:pb-#{$name} { padding-bottom: $size; }
+    .sm\:pl-#{$name} { padding-left: $size; }
+  }
+  
+  @include screen-md {
+    .md\:p-#{$name} { padding: $size; }
+    .md\:px-#{$name} { padding-left: $size; padding-right: $size; }
+    .md\:py-#{$name} { padding-top: $size; padding-bottom: $size; }
+    .md\:pt-#{$name} { padding-top: $size; }
+    .md\:pr-#{$name} { padding-right: $size; }
+    .md\:pb-#{$name} { padding-bottom: $size; }
+    .md\:pl-#{$name} { padding-left: $size; }
+  }
+  
+  @include screen-lg {
+    .lg\:p-#{$name} { padding: $size; }
+    .lg\:px-#{$name} { padding-left: $size; padding-right: $size; }
+    .lg\:py-#{$name} { padding-top: $size; padding-bottom: $size; }
+    .lg\:pt-#{$name} { padding-top: $size; }
+    .lg\:pr-#{$name} { padding-right: $size; }
+    .lg\:pb-#{$name} { padding-bottom: $size; }
+    .lg\:pl-#{$name} { padding-left: $size; }
+  }
+}
+
+// *************************************** //
+//                  MISC                   //
+// *************************************** //
+
+// animation-utils
+.animate {
+  transition: all var(--transition-base) ease-in-out;
+}
+
+// font-utils
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+// responsive-helpers
+.hide-sm {
+  @include screen-sm {
+    display: none;
+  }
+}
+
+.show-sm {
+  display: none;
+  @include screen-sm {
+    display: block;
+  }
+}
+
+// focus-visible polyfill
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+
+// dark-mode support
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--color-gray-900);
+    --color-text: var(--color-gray-100);
+    --color-text-secondary: var(--color-gray-400);
+  }
+  
+  img {
+    filter: brightness(.8) contrast(1.2);
+  }
+  
+  input, textarea, select {
+    background-color: var(--color-gray-800);
+    border-color: var(--color-gray-700);
+    color: var(--color-white);
+  }
+}
+
+
+// *************************************** //
+//               PRINT STYLES              //
+// *************************************** //
+
+@media print {
+  body {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  a {
+    text-decoration: underline;
+    color: #000;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  main {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+  
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+  
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+}
